@@ -89,14 +89,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         mButtonAnalyze.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view){
-                rate = mEditTextRate.getText().toString();
-                presure = mEditTextPresure.getText().toString();
-                saturation = mEditTextSaturation.getText().toString();
-                temperature = mEditTextTemperature.getText().toString();
-                sugar = mEditTextSugar.getText().toString();
 
-                saveData();
+            public void onClick(View view){
+                boolean bandera = false;
+                rate = ( mEditTextRate.getText() != null)?mEditTextRate.getText().toString():null;
+                if(rate == null){bandera=true;}
+                presure = ( mEditTextPresure.getText() != null)? mEditTextPresure.getText().toString(): null;
+                if(rate == null){bandera=true;}
+                saturation = ( mEditTextSaturation.getText() != null)? mEditTextSaturation.getText().toString():null;
+                if(rate == null){bandera=true;}
+                temperature = ( mEditTextTemperature.getText() != null)? mEditTextTemperature.getText().toString():null;
+                if(rate == null){bandera=true;}
+                sugar = ( mEditTextSugar.getText() != null)? mEditTextSugar.getText().toString():null;
+                if(rate == null){bandera=true;}
+                if(bandera){
+                    saveData();
+                }else{
+                    notifi();
+                }
             }
         });
 
@@ -112,6 +122,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .build();
 
 
+    }
+
+    private void notifi(){
+        Toast.makeText(MainActivity.this, "Por favor llene todos los campos", Toast.LENGTH_SHORT).show();
     }
 
     //Almacenar datos
