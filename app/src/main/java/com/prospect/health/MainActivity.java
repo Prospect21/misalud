@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public static String sugar="";
     private GoogleApiClient googleApiClient;
     public static String date1;
+    public static String dato="00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,22 +93,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
 
             public void onClick(View view){
-                boolean bandera = false;
-                rate = ( mEditTextRate.getText() != null)?mEditTextRate.getText().toString():null;
-                if(rate == null){bandera=true;}
-                presure = ( mEditTextPresure.getText() != null)? mEditTextPresure.getText().toString(): null;
-                if(rate == null){bandera=true;}
-                saturation = ( mEditTextSaturation.getText() != null)? mEditTextSaturation.getText().toString():null;
-                if(rate == null){bandera=true;}
-                temperature = ( mEditTextTemperature.getText() != null)? mEditTextTemperature.getText().toString():null;
-                if(rate == null){bandera=true;}
-                sugar = ( mEditTextSugar.getText() != null)? mEditTextSugar.getText().toString():null;
-                if(rate == null){bandera=true;}
-                if(bandera){
-                    saveData();
-                }else{
-                    notifi();
-                }
+
+                rate = ( mEditTextRate.getText() != null)?mEditTextRate.getText().toString():dato;
+                presure = ( mEditTextPresure.getText() != null)? mEditTextPresure.getText().toString(): "0";
+                saturation = ( mEditTextSaturation.getText() != null)? mEditTextSaturation.getText().toString():"0";
+                temperature = ( mEditTextTemperature.getText() != null)? mEditTextTemperature.getText().toString():"0";
+                sugar = ( mEditTextSugar.getText() != null)? mEditTextSugar.getText().toString():"0";
+                saveData();
+                //mButtonAnalyze.setBackgroundColor(Color.RED);
             }
         });
 
